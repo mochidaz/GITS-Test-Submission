@@ -3,18 +3,21 @@ use std::cmp::max;
 fn count_digits(x: &Vec<i32>) -> i32 {
 
     let mut counter = 0;
-
     let mut counter2 = 0;
 
-    for i in 0..x.len() - 1 {
-        if x[i] != 1 {
-            counter = max(counter, counter2);
-            counter2 = 0;
+    let n = x.len();
+
+    for i in 0..n {
+        if x[i] == 1 {
+            counter += 1;
         }
-        counter2 += 1;
+        else {
+            counter = 0;
+        }
+        counter2 = max(counter, counter2)
     }
 
-    max(counter, counter2)
+    counter2
 }
 
 fn main() {
